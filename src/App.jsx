@@ -1,21 +1,25 @@
 import { useState } from "react";
+
 function App() {
   const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState("");
+
   const addTask = () => {
     if (task.trim() !== "") {
       setTasks([...tasks, task]);
       setTask("");
     }
   };
+
   const removeTask = (index) => {
     setTasks(tasks.filter((_, i) => i !== index));
   };
-return(
-  <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white shadow-lg p-6 rounded-lg w-96">
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+      <div className="bg-white shadow-lg p-6 rounded-lg w-full max-w-md">
         <h1 className="text-2xl font-bold text-center text-gray-700 mb-4">
-        To-Do List
+          To-Do List
         </h1>
 
         <div className="flex gap-2 mb-4">
@@ -28,7 +32,7 @@ return(
           />
           <button
             onClick={addTask}
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
           >
             Add
           </button>
@@ -40,20 +44,19 @@ return(
               key={index}
               className="flex justify-between items-center bg-gray-200 p-2 mb-2 rounded-lg"
             >
-              <span>{t}</span>
+              <span className="break-words w-full max-w-xs">{t}</span>
               <button
                 onClick={() => removeTask(index)}
-                className="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600"
+                className="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition"
               >
-          Delete
-
+                Delete
               </button>
             </li>
           ))}
         </ul>
       </div>
     </div>
-)
+  );
 }
 
-export default App
+export default App;
