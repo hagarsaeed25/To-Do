@@ -17,12 +17,12 @@ function App() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-      <div className="bg-white shadow-lg p-6 rounded-lg w-full max-w-md">
+      <div className="bg-white shadow-lg p-6 rounded-lg w-full max-w-lg sm:max-w-md">
         <h1 className="text-2xl font-bold text-center text-gray-700 mb-4">
           To-Do List
         </h1>
 
-        <div className="flex gap-2 mb-4">
+        <div className="flex flex-col sm:flex-row gap-2 mb-4">
           <input
             type="text"
             value={task}
@@ -32,22 +32,24 @@ function App() {
           />
           <button
             onClick={addTask}
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
+            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition w-full sm:w-auto"
           >
             Add
           </button>
         </div>
 
-        <ul>
+        <ul className="space-y-2">
           {tasks.map((t, index) => (
             <li
               key={index}
-              className="flex justify-between items-center bg-gray-200 p-2 mb-2 rounded-lg"
+              className="flex flex-col sm:flex-row justify-between items-center bg-gray-200 p-2 rounded-lg"
             >
-              <span className="break-words w-full max-w-xs">{t}</span>
+              <span className="break-words w-full sm:max-w-xs text-center sm:text-left">
+                {t}
+              </span>
               <button
                 onClick={() => removeTask(index)}
-                className="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition"
+                className="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition mt-2 sm:mt-0"
               >
                 Delete
               </button>
